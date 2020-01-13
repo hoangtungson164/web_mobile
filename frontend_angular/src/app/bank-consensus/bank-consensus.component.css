@@ -4,3 +4,15 @@
   justify-content: center;
 }
 
+.back {
+  border: none;
+}
+
+hr {
+  border: 1px solid cornflowerblue;
+}
+
+.card {
+  background: none;
+}
+

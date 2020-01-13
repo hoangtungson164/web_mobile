@@ -8,13 +8,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {HeadingComponent} from './heading/heading.component';
 import {BankConsensusComponent} from './bank-consensus/bank-consensus.component';
 import {FormsModule} from '@angular/forms';
+import { SendingInfoComponent } from './sending-info/sending-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BankListComponent,
     HeadingComponent,
-    BankConsensusComponent
+    BankConsensusComponent,
+    SendingInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IBank} from '../interface/ibank';
 import {map} from 'rxjs/operators';
-import {IBankConsensus} from '../interface/i-bank-consensus';
+import {IBankConsensus} from '../../bank-consensus/interface/i-bank-consensus';
 
 
 const URL = environment.URL;

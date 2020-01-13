@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BankService} from '../bank-list/service/bank.service';
-import {IBankConsensus} from '../bank-list/interface/i-bank-consensus';
+import {IBankConsensus} from './interface/i-bank-consensus';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -11,6 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 export class BankConsensusComponent implements OnInit {
 
   bankConsensus: IBankConsensus;
+  id: number;
 
   constructor(
     private bankService: BankService,
@@ -19,8 +20,8 @@ export class BankConsensusComponent implements OnInit {
   }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.getConsensus(id);
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.getConsensus(this.id);
   }
 
   getConsensus(id: number) {

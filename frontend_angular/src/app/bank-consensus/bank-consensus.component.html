@@ -1,0 +1,56 @@
+<div><i class="fas fa-arrow-left"></i>  Consensus of data using, collecting and using</div>
+<div class="accordion" id="accordionExample" *ngIf="bankConsensus">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <div class="btn-group">
+        <button class="btn consensus" type="button">Consensus of data collection
+        </button>
+        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-caret-down"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        {{bankConsensus.data_collection_consensus}}
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <div class="btn-group">
+        <button class="btn consensus" type="button">Consensus of data using
+        </button>
+        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-caret-down"></i>
+        </button>
+      </div>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        {{bankConsensus.data_using_consensus}}
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <div class="btn-group">
+        <button class="btn consensus" type="button">Consensus of data providing
+        </button>
+        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseThree"
+                aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-caret-down"></i>
+        </button>
+      </div>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        {{bankConsensus.data_providing_consensus}}
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div id="wrapper">
+  <button class="btn btn-outline-primary" [routerLink]="['/banks']">Next</button>
+</div>

@@ -11,3 +11,16 @@ hr {
 hr.lineBetween {
   border: 1px solid cornflowerblue;
 }
+
+.body-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+input[type="radio"] {
+  -webkit-appearance: checkbox; /* Chrome, Safari, Opera */
+  -moz-appearance: checkbox;    /* Firefox */
+  align-content: center;
+  margin-left: -20px;
+}
+

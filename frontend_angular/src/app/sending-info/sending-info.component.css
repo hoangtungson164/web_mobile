@@ -6,6 +6,7 @@
 
 .back {
     border: none;
+    text-align: left;
 }
 
 hr {
@@ -14,9 +15,27 @@ hr {
 
 .consensus {
     text-align: left;
-    margin-left: -30px;
 }
 
 .drop {
-    margin-left: 30px;
+    align-items: center
 }
+
+input[type="radio"] {
+    -webkit-appearance: checkbox; /* Chrome, Safari, Opera */
+    -moz-appearance: checkbox;    /* Firefox */
+    align-content: center;
+    margin-left: -20px;
+}
+
+.consensusInput {
+    margin-bottom: 0;
+}
+
+.body-title {
+    text-align: center;
+    font-weight: bold;
+
+}
+
+

@@ -1,3 +1,19 @@
 hr {
     border: 2px solid cornflowerblue;
 }
+
+header {
+    color: white;
+    background-color: cornflowerblue;
+    font-style: italic;
+    font-family: KacstOffice, serif;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.header-logo {
+    font-size: small;
+    text-align: center;
+    margin-left: -100px;
+}

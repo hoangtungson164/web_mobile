@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
 
     loginForm: FormGroup;
 
+    check = false;
+
     constructor(private route: ActivatedRoute) {
     }
 
@@ -26,5 +28,7 @@ export class LoginComponent implements OnInit {
         this.id = +this.route.snapshot.paramMap.get('id');
     }
 
-
+    checkBox() {
+        this.check = true;
+    }
 }

@@ -5,6 +5,7 @@
 }
 
 .back {
+  margin-top: 0;
   border: none;
 }
 
@@ -14,11 +15,17 @@ hr {
 
 .consensus {
   text-align: left;
-  margin-left: -30px;
+  /*margin-left: -30px;*/
 }
 
 .drop {
-  margin-left: 30px;
+  /*margin-left: 30px;*/
+}
+
+.body-title {
+  text-align: center;
+  font-weight: bold;
+
 }
 
 

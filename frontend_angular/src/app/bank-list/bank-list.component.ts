@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BankService} from './service/bank.service';
 import {IBank} from './interface/ibank';
+import {DataStorageService} from '../storage/data-storage.service';
 
 @Component({
   selector: 'app-bank-list',
@@ -13,7 +14,10 @@ export class BankListComponent implements OnInit {
 
   bankId: number;
 
-  constructor(private bankService: BankService) {
+  constructor(
+      private bankService: BankService,
+      private dataStorageService: DataStorageService,
+      ) {
   }
 
   ngOnInit() {
@@ -30,8 +34,9 @@ export class BankListComponent implements OnInit {
     });
   }
 
-  getId(id: number) {
+  getId(id: number, institution: string) {
     this.bankId = id;
+    this.dataStorageService.saveInstitution(institution);
   }
 
 

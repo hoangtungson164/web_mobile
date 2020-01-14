@@ -6,7 +6,7 @@
       <input type="radio" class="bank" name="options" id="{{bank.id}}" (click)="getId(bank.id)"> {{bank.bank_code}}
     </label>
   </div>
-  <hr>
+  <hr class="lineBetween">
 </div>
 <div id="wrapper" *ngIf="bankId">
   <button class="btn btn-outline-primary" [routerLink]="['/banks', bankId, 'sending']">Next</button>

@@ -12,7 +12,13 @@ hr {
   border: 1px solid cornflowerblue;
 }
 
-.card {
-  background: none;
+.consensus {
+  text-align: left;
+  margin-left: -30px;
 }
+
+.drop {
+  margin-left: 30px;
+}
+
 

@@ -5,5 +5,9 @@
 }
 
 hr {
+  border: 2px solid cornflowerblue;
+}
+
+hr.lineBetween {
   border: 1px solid cornflowerblue;
 }

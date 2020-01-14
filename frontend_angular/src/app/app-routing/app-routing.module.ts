@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {BankListComponent} from '../bank-list/bank-list.component';
 import {BankConsensusComponent} from '../bank-consensus/bank-consensus.component';
 import {SendingInfoComponent} from '../sending-info/sending-info.component';
+import {LoginComponent} from '../login/login.component';
 
 const routes: Routes = [{
   path: 'banks',
@@ -14,6 +15,9 @@ const routes: Routes = [{
 }, {
   path: 'banks/:id/sending',
   component: SendingInfoComponent,
+}, {
+  path: 'banks/:id/login',
+  component: LoginComponent,
 }];
 
 @NgModule({

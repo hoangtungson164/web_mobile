@@ -31,6 +31,10 @@ export class InformationComponent implements OnInit {
         }
     }
 
+    get f() {
+        return this.informationForm.controls;
+    }
+
     saveData() {
         const {value} = this.informationForm;
         this.dataStorageService.saveName(value.full_name);

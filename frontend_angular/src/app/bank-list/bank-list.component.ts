@@ -4,40 +4,42 @@ import {IBank} from './interface/ibank';
 import {DataStorageService} from '../storage/data-storage.service';
 
 @Component({
-  selector: 'app-bank-list',
-  templateUrl: './bank-list.component.html',
-  styleUrls: ['./bank-list.component.css']
+    selector: 'app-bank-list',
+    templateUrl: './bank-list.component.html',
+    styleUrls: ['./bank-list.component.css']
 })
 export class BankListComponent implements OnInit {
 
-  banks: IBank[];
+    banks: IBank[];
 
-  bankId: number;
+    bankId: number;
 
-  constructor(
-      private bankService: BankService,
-      private dataStorageService: DataStorageService,
-      ) {
-  }
+    constructor(
+        private bankService: BankService,
+        private dataStorageService: DataStorageService,
+    ) {
+    }
 
-  ngOnInit() {
-    this.getAllBanks();
-  }
+    ngOnInit() {
+        this.getAllBanks();
+    }
 
-  getAllBanks() {
-    this.bankService.getBanks(10).subscribe(next => {
-      this.banks = next;
-      console.log('success to get all banks');
-    }, error => {
-      console.log(error);
-      console.log('fail to get banks');
-    });
-  }
+    getAllBanks() {
+        this.bankService.getBanks(10).subscribe(next => {
+            this.banks = next;
+            console.log('success to get all banks');
+        }, error => {
+            console.log(error);
+            console.log('fail to get banks');
+        });
+    }
 
-  getId(id: number, institution: string) {
-    this.bankId = id;
-    this.dataStorageService.saveInstitution(institution);
-  }
+    getId(id: number, institution: string) {
+        this.bankId = id;
+        this.dataStorageService.saveInstitution(institution);
+    }
+
+
 
 
 }

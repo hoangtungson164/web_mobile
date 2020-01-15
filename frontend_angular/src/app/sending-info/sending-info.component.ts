@@ -1,13 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DataStorageService} from '../storage/data-storage.service';
 import {ReportService} from './service/report-service.service';
 import {IReport} from './interface/i-report';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'app-sending-info',
     templateUrl: './sending-info.component.html',
-    styleUrls: ['./sending-info.component.css']
+    styleUrls: ['./sending-info.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class SendingInfoComponent implements OnInit {
 
@@ -27,6 +29,7 @@ export class SendingInfoComponent implements OnInit {
     ngOnInit() {
         this.id = +this.route.snapshot.paramMap.get('id');
         this.getAllReport();
+        // this.save();
     }
 
     getAllReport() {
@@ -44,4 +47,11 @@ export class SendingInfoComponent implements OnInit {
         this.dataStorageService.saveReport(report);
     }
 
+    // save() {
+    //     $(document).ready(next => {
+    //         $('input[type="checkbox"]').on('change', function() {
+    //             $('input[type="checkbox"]').not(this).prop('checked', false);
+    //         });
+    //     });
+    // }
 }

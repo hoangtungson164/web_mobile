@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {DataStorageService} from '../storage/data-storage.service';
 
 @Component({
     selector: 'app-information',
@@ -10,16 +11,30 @@ export class InformationComponent implements OnInit {
 
     informationForm: FormGroup;
 
-    constructor(private fb: FormBuilder) {
+    constructor(
+        private fb: FormBuilder,
+        private dataStorageService: DataStorageService,
+    ) {
     }
 
     ngOnInit() {
-        this.informationForm = this.fb.group({
-            full_name: ['', [Validators.required, Validators.minLength(5)]],
-            national_id: ['', [Validators.required, Validators.minLength(9)]]
-        });
+        if (this.dataStorageService.getName() || this.dataStorageService.getNationalId()) {
+            this.informationForm = this.fb.group({
+                full_name: [this.dataStorageService.getName(), [Validators.required, Validators.minLength(5)]],
+                national_id: [this.dataStorageService.getNationalId(), [Validators.required, Validators.minLength(9)]]
+            });
+        } else {
+            this.informationForm = this.fb.group({
+                full_name: ['', [Validators.required, Validators.minLength(5)]],
+                national_id: ['', [Validators.required, Validators.minLength(9)]]
+            });
+        }
     }
 
-
+    saveData() {
+        const {value} = this.informationForm;
+        this.dataStorageService.saveName(value.full_name);
+        this.dataStorageService.saveNationalId(value.national_id);
+    }
 
 }

@@ -10,22 +10,25 @@
 }
 
 hr {
-  border: 1px solid cornflowerblue;
+  border: 2px solid cornflowerblue;
 }
 
 .consensus {
   text-align: left;
-  /*margin-left: -30px;*/
-}
-
-.drop {
-  /*margin-left: 30px;*/
 }
 
 .body-title {
   text-align: center;
   font-weight: bold;
+}
 
+.mat-checkbox .mat-checkbox-frame {
+  transform: scale(1.5);
+  border: solid 1px cornflowerblue;
+}
+
+.mat-checkbox-checked .mat-checkbox-background {
+  transform: scale(1.5);
 }
 
 

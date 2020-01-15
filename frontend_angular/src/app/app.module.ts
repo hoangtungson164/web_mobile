@@ -12,6 +12,9 @@ import {SendingInfoComponent} from './sending-info/sending-info.component';
 import {LoginComponent} from './login/login.component';
 import { InformationComponent } from './information/information.component';
 import { FooterComponent } from './footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCheckboxModule, MatRadioModule} from '@angular/material';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +25,8 @@ import { FooterComponent } from './footer/footer.component';
         SendingInfoComponent,
         LoginComponent,
         InformationComponent,
-        FooterComponent
+        FooterComponent,
+        ReportComponent
     ],
     imports: [
         BrowserModule,
@@ -30,6 +34,9 @@ import { FooterComponent } from './footer/footer.component';
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatCheckboxModule,
+        MatRadioModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,11 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {FormControl, FormControlName, FormGroup} from '@angular/forms';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {DataStorageService} from '../storage/data-storage.service';
+import {TokenStorageService} from '../jwt/token.service';
+import {AuthService} from '../jwt/auth.service';
+import {AuthLoginInfo} from '../jwt/auth-login-info';
+import {MustMatch} from '../validators/mustMatch';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 
@@ -15,20 +21,63 @@ export class LoginComponent implements OnInit {
 
     check = false;
 
-    constructor(private route: ActivatedRoute) {
+    report: string;
+
+    constructor(
+        private authService: AuthService,
+        private tokenStorage: TokenStorageService,
+        private route: ActivatedRoute,
+        private router: Router,
+        private dataStorageService: DataStorageService,
+        private fb: FormBuilder,
+    ) {
     }
 
     ngOnInit() {
-        this.loginForm = new FormGroup({
-                id: new FormControl(''),
-                password: new FormControl(''),
-                confirmPassword: new FormControl('')
+        this.loginForm = this.fb.group({
+                email: ['', [Validators.required, Validators.minLength(5)]],
+                password: ['', [Validators.required, Validators.minLength(5)]],
+                confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
+            }, {
+                validator: MustMatch('password', 'confirmPassword')
             }
         );
         this.id = +this.route.snapshot.paramMap.get('id');
+        this.report = this.dataStorageService.getReport();
     }
 
     checkBox() {
-        this.check = true;
+        this.check = !this.check;
+    }
+
+    get f() {
+        return this.loginForm.controls;
+    }
+
+
+    onSubmit() {
+        const {email, password} = this.loginForm.value;
+
+        const loginFormAuth = new AuthLoginInfo(email, password);
+
+        if (this.loginForm.invalid) {
+            console.log('fail');
+            return;
+        }
+
+        this.authService.attemptAuth(loginFormAuth).subscribe(
+            data => {
+                console.log(data.accessToken);
+                this.tokenStorage.saveId(data.id);
+                this.tokenStorage.saveEmail(data.email);
+                this.tokenStorage.saveUsername(data.name);
+                this.tokenStorage.saveToken(data.accessToken);
+                console.log(this.tokenStorage.getToken());
+                this.router.navigate(['/banks/report']).then(r => console.log('success to navigate'));
+            },
+            error => {
+                console.log(error);
+            }
+        );
     }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {BankService} from '../bank-list/service/bank.service';
 import {IBankConsensus} from './interface/i-bank-consensus';
 import {ActivatedRoute} from '@angular/router';
@@ -6,7 +6,8 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
     selector: 'app-bank-consensus',
     templateUrl: './bank-consensus.component.html',
-    styleUrls: ['./bank-consensus.component.css']
+    styleUrls: ['./bank-consensus.component.css'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class BankConsensusComponent implements OnInit {
 

@@ -1,9 +1,11 @@
+/*-----------------button next-----------------*/
 #wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/*----------------button go back------------------*/
 .back {
   margin-top: 0;
   border: none;
@@ -13,15 +15,18 @@ hr {
   border: 2px solid cornflowerblue;
 }
 
-.consensus {
-  text-align: left;
-}
-
+/*---------------Title----------------------*/
 .body-title {
   text-align: center;
   font-weight: bold;
 }
 
+/*-------------Agreement----------------------*/
+.consensus {
+  text-align: left;
+}
+
+/*---------------checkbox---------------------*/
 .mat-checkbox .mat-checkbox-frame {
   transform: scale(1.5);
   border: solid 1px cornflowerblue;

@@ -7,7 +7,7 @@ import {LoginComponent} from '../login/login.component';
 import {ReportComponent} from '../report/report.component';
 
 const routes: Routes = [{
-  path: 'banks',
+  path: '',
   component: BankListComponent,
 }, {
   path: 'banks/:id/consensus',

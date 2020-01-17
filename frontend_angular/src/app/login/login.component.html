@@ -67,7 +67,7 @@
         </div>
     </div>
     <hr>
-    <div id="wrapper" *ngIf="check">
+    <div id="wrapper" *ngIf="check && !f.email.errors && !f.password.errors && !f.confirmPassword.errors && name && nationalId">
         <button class="btn btn-outline-primary" (click)="onSubmit()">Next</button>
     </div>
 </div>

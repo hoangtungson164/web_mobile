@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
 
     report: string;
 
+    name: string;
+
+    nationalId: string;
+
     constructor(
         private authService: AuthService,
         private tokenStorage: TokenStorageService,
@@ -34,6 +38,9 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.name = this.dataStorageService.getName();
+        this.nationalId = this.dataStorageService.getNationalId();
+        console.log(this.name , this.nationalId);
         this.loginForm = this.fb.group({
                 email: ['', [Validators.required, Validators.minLength(5)]],
                 password: ['', [Validators.required, Validators.minLength(5)]],

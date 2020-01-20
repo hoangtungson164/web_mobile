@@ -12,7 +12,7 @@ export class BankListComponent implements OnInit {
 
     banks: IBank[];
 
-    bankId: number;
+    bankId: string;
 
     constructor(
         private bankService: BankService,
@@ -34,7 +34,7 @@ export class BankListComponent implements OnInit {
         });
     }
 
-    getId(id: number, institution: string) {
+    getId(id: string, institution: string) {
         this.bankId = id;
         this.dataStorageService.saveInstitution(institution);
     }

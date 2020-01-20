@@ -13,13 +13,13 @@ const URL = environment.URL;
 })
 export class ReportService {
 
-    apiURL = URL + '/reports';
+    apiURL = URL + '/banks';
 
     constructor(private httpClient: HttpClient) {
     }
 
-    getAllReport(count = 10): Observable<IReport[]> {
-        return this.httpClient.get<IReport[]>(this.apiURL).pipe(
+    getAllReport(count = 10, id: number): Observable<IReport[]> {
+        return this.httpClient.get<IReport[]>(this.apiURL + '/' + id + '/report').pipe(
             map(data => data.filter((todo, i) => i < count))
         );
     }

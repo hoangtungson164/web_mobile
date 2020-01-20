@@ -1,6 +1,5 @@
 export interface IBankConsensus {
-  id: number;
-  data_providing_consensus: string;
-  data_using_consensus: string;
-  data_collection_consensus: string;
+  'TO_CHAR(COLLECTION)': string;
+  'TO_CHAR(DATA_USING)': string;
+  'TO_CHAR(PROVIDING)': string;
 }

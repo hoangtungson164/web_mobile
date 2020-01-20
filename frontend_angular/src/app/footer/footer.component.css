@@ -8,3 +8,15 @@ footer {
     color: white;
     background: cornflowerblue;
 }
+
+@media only screen and (max-height: 700px) {
+    footer {
+        height: 9%;
+    }
+}
+
+@media only screen and (max-height: 400px) {
+    footer {
+        height: 15%;
+    }
+}

@@ -11,6 +11,20 @@
     }
 }
 
+@media only screen and (max-height: 700px) {
+    .footer {
+        height: 10%;
+    }
+    .header {
+        height: 15%;
+    }
+}
+
+@media only screen and (max-height: 400px) {
+    .footer {
+        height: 15%;
+    }
+}
 
 html, body {
     height: 100%;

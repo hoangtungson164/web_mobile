@@ -33,7 +33,7 @@ export class SendingInfoComponent implements OnInit {
     }
 
     getAllReport() {
-        this.reportService.getAllReport(10).subscribe(next => {
+        this.reportService.getAllReport(10, this.id).subscribe(next => {
             this.reports = next;
             console.log('success get all the report');
         }, error => {
@@ -42,9 +42,10 @@ export class SendingInfoComponent implements OnInit {
         });
     }
 
-    checkBox(report: string) {
+    checkBox(report: string, name: string) {
         this.check = true;
-        this.dataStorageService.saveReport(report);
+        this.dataStorageService.saveReportCode(report);
+        this.dataStorageService.saveReportName(name);
     }
 
     // save() {

@@ -10,19 +10,9 @@
     <div class="accordion" id="accordionExample">
         <div class="card">
             <div class="card-header card-check form-inline" id="headingOne" *ngFor="let report of reports">
-<!--                <div class="form-group col-10" style="margin-bottom: 0">-->
-<!--                    <input type="checkbox" id="checkbox-consensus"  class="checkbox-consensus" name="radio"-->
-<!--                           (click)="checkBox(report.report_name)"><label for="checkbox-consensus"><i style="margin-left: 10px">{{report.report_name}}</i></label>-->
-<!--                </div>-->
-<!--                <div class="form-group col-2">-->
-<!--                    <button class="btn drop" type="button" data-toggle="collapse"-->
-<!--                            data-target="#collapseOne"-->
-<!--                            aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-caret-down "></i>-->
-<!--                    </button>-->
-<!--                </div>-->
                 <div class="form-group col-sm-11 col-10">
-                    <mat-radio-button color="primary" id="{{report.id}}" class="checkbox-consensus" name="radio"
-                                  (click)="checkBox(report.report_name)"><i style="margin-left: 10px">{{report.report_name}}</i></mat-radio-button>
+                    <mat-radio-button color="primary" id="{{report.REPORT_CODE}}" class="checkbox-consensus" name="radio"
+                                  (click)="checkBox(report.REPORT_CODE, report.REPORT_NAME)"><i style=" margin-left: 10px">{{report.REPORT_NAME}}</i></mat-radio-button>
                 </div>
                 <div class="form-group">
                     <button class="btn drop" type="button" data-toggle="collapse"

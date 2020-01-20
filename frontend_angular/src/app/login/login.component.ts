@@ -4,8 +4,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DataStorageService} from '../storage/data-storage.service';
 import {TokenStorageService} from '../jwt/token.service';
 import {AuthService} from '../jwt/auth.service';
-import {AuthLoginInfo} from '../jwt/auth-login-info';
 import {MustMatch} from '../validators/mustMatch';
+import {IndiService} from '../information/service/indi.service';
+import {IInfo} from '../information/interface/i-info';
 
 @Component({
     selector: 'app-login',
@@ -27,6 +28,8 @@ export class LoginComponent implements OnInit {
 
     nationalId: string;
 
+    info: IInfo;
+
     constructor(
         private authService: AuthService,
         private tokenStorage: TokenStorageService,
@@ -34,13 +37,13 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private dataStorageService: DataStorageService,
         private fb: FormBuilder,
+        private infoService: IndiService,
     ) {
     }
 
     ngOnInit() {
         this.name = this.dataStorageService.getName();
         this.nationalId = this.dataStorageService.getNationalId();
-        console.log(this.name , this.nationalId);
         this.loginForm = this.fb.group({
                 email: ['', [Validators.required, Validators.minLength(5)]],
                 password: ['', [Validators.required, Validators.minLength(5)]],
@@ -50,7 +53,7 @@ export class LoginComponent implements OnInit {
             }
         );
         this.id = +this.route.snapshot.paramMap.get('id');
-        this.report = this.dataStorageService.getReport();
+        this.report = this.dataStorageService.getReportName();
     }
 
     checkBox() {
@@ -63,16 +66,14 @@ export class LoginComponent implements OnInit {
 
 
     onSubmit() {
-        const {email, password} = this.loginForm.value;
-
-        const loginFormAuth = new AuthLoginInfo(email, password);
-
+        this.saveInfo();
+        const {value} = this.loginForm;
         if (this.loginForm.invalid) {
             console.log('fail');
             return;
         }
 
-        this.authService.attemptAuth(loginFormAuth).subscribe(
+        this.authService.attemptAuth(value).subscribe(
             data => {
                 console.log(data.accessToken);
                 this.tokenStorage.saveId(data.id);
@@ -86,5 +87,18 @@ export class LoginComponent implements OnInit {
                 console.log(error);
             }
         );
+    }
+
+    saveInfo() {
+        this.info = new IInfo(this.dataStorageService.getName(), +
+            this.dataStorageService.getNationalId(), +
+            this.dataStorageService.getReportCode(), +
+            this.id.toString());
+        this.infoService.postIndi(this.info).subscribe(next => {
+            console.log(this.info);
+            console.log('success to store individual');
+        }, error => {
+            console.log('fail to store individual');
+        });
     }
 }

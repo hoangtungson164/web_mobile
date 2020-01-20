@@ -10,6 +10,11 @@ header {
     font-size: x-large;
     font-weight: bold;
     text-align: center;
+    position: fixed;
+    top: 0;
+    height: 10%;
+    width: 100%;
+    z-index: 2;
 }
 
 .header-logo {
@@ -18,4 +23,22 @@ header {
     margin-left: -100px;
 }
 
+
+@media only screen and (max-height: 700px) {
+    header {
+        height: 14%;
+    }
+}
+
+@media only screen and (max-height: 500px) {
+    header {
+        height: 20%;
+    }
+}
+
+@media only screen and (max-height: 300px) {
+    header {
+        font-size: medium;
+    }
+}
 

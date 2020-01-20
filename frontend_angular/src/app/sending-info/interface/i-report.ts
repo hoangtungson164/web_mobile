@@ -1,4 +1,4 @@
 export interface IReport {
-    id: number;
-    report_name: string;
+    REPORT_CODE: string;
+    REPORT_NAME: string;
 }

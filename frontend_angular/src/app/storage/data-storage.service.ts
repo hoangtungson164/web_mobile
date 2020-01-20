@@ -2,9 +2,10 @@ import {Injectable} from '@angular/core';
 import {IInfo} from '../information/interface/i-info';
 
 const INSTITUTION = 'Target Institution';
-const CREDIT_REPORT = 'Credit report';
-const NAME = 'full name';
-const NATIONAL_ID = 'national id';
+const CREDIT_REPORT = 'Credit report code';
+const NAME = 'Full name';
+const NATIONAL_ID = 'National id';
+const CREDIT_NAME = 'Credit name';
 
 @Injectable({
     providedIn: 'root'
@@ -23,12 +24,21 @@ export class DataStorageService {
         return sessionStorage.getItem(INSTITUTION);
     }
 
-    public saveReport(report: string) {
-        window.sessionStorage.removeItem(CREDIT_REPORT);
-        window.sessionStorage.setItem(CREDIT_REPORT, report);
+    public saveReportName(reportName: string) {
+        window.sessionStorage.removeItem(CREDIT_NAME);
+        window.sessionStorage.setItem(CREDIT_NAME, reportName);
     }
 
-    public getReport(): string {
+    public getReportName(): string {
+        return sessionStorage.getItem(CREDIT_NAME);
+    }
+
+    public saveReportCode(reportCode: string) {
+        window.sessionStorage.removeItem(CREDIT_REPORT);
+        window.sessionStorage.setItem(CREDIT_REPORT, reportCode);
+    }
+
+    public getReportCode(): string {
         return sessionStorage.getItem(CREDIT_REPORT);
     }
 

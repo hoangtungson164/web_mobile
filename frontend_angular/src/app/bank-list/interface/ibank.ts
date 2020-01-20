@@ -1,5 +1,5 @@
 export interface IBank {
-  id: number;
-  bank_code: string;
-  bank_name: string;
+  CUST_GB: string;
+  CUST_CD: string;
+  CUST_NM_ENG: string;
 }

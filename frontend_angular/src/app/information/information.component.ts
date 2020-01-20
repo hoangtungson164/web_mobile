@@ -39,6 +39,7 @@ export class InformationComponent implements OnInit {
         const {value} = this.informationForm;
         this.dataStorageService.saveName(value.full_name);
         this.dataStorageService.saveNationalId(value.national_id);
+        console.log(value);
     }
 
 }
